@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "spring.datasourse.driver",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasourse.driver."
+    },
+    {
+      "name": "entitymanager.packages.to.scan",
+      "type": "java.lang.String",
+      "description": "Description for entitymanager.packages.to.scan."
+    }
+  ] }
