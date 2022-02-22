@@ -1,4 +1,5 @@
 package com.example.spring_boot.controllers;
+
 import com.example.spring_boot.model.User;
 import com.example.spring_boot.service.RoleService;
 import com.example.spring_boot.service.UserService;
@@ -9,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -43,7 +45,7 @@ public class RestAdminController {
 
     @PostMapping("/users")
     public ResponseEntity<User> addNewUser(@RequestBody User user) {
-        if(user.getPassword().length() != 60){
+        if (user.getPassword().length() != 60) {
             user.setPassword(passwordEncoder().encode(user.getPassword()));
         }
         userService.save(user);
