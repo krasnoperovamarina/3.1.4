@@ -1,4 +1,5 @@
 package com.example.spring_boot.util;
+import com.example.spring_boot.dao.RoleRepository;
 import com.example.spring_boot.dao.UserRepository;
 import com.example.spring_boot.model.Role;
 import com.example.spring_boot.model.User;
@@ -13,6 +14,8 @@ import java.util.Set;
 class DBStart {
 
     final UserRepository userRepository;
+    @Autowired
+    RoleRepository roleRepository;
 
     @Autowired
     public DBStart(UserRepository userRepository) {
@@ -39,6 +42,11 @@ class DBStart {
         if (Objects.nonNull(user.getUsername())) {
             admin.setName(user.getName());
             userRepository.save(user);
+
+            Role userRole = new Role(1, "ADMIN");
+            Role adminRole = new Role(2, "USER");
+            roleRepository.save(userRole);
+            roleRepository.save(adminRole);
         }
     }
 }
